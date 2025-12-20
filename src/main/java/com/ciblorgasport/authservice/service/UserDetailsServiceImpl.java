@@ -1,10 +1,14 @@
 package com.ciblorgasport.authservice.service;
 
+import java.util.List;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
 import com.ciblorgasport.authservice.entity.User;
 import com.ciblorgasport.authservice.repository.UserRepository;
-import java.util.List;
-import org.springframework.security.core.userdetails.*;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -16,6 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
             .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+        System.out.println("[DEBUG] loadUserByUsername: username=" + user.getUsername() + ", enabled=" + user.isEnabled() + ", validated=" + user.isValidated() + ", passwordHash=" + user.getPassword());
         return user;
     }
     public User getUserByUsername(String username) {
