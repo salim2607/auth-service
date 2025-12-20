@@ -1,0 +1,13 @@
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/repository/UserRepository.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/security/AuthTokenFilter.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/entity/Role.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/dto/JwtResponse.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/entity/User.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/service/UserDetailsServiceImpl.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/controller/AuthController.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/dto/RegisterRequest.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/security/JwtUtils.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/dto/LoginRequest.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/security/SecurityConfig.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/AuthServiceApplication.java
+/Users/salimtitouche/Desktop/auth-service/src/main/java/com/ciblorgasport/authservice/service/AuthService.java

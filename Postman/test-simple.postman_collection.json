@@ -1,0 +1,49 @@
+{
+    "info": {
+      "name": "Test Très Simple",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "1. Test Hello",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/auth/hello"
+        }
+      },
+      {
+        "name": "2. Créer Utilisateur",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"username\": \"testman\",\n  \"email\": \"test@man.com\",\n  \"password\": \"test123\",\n  \"role\": \"USER\"\n}"
+          },
+          "url": "http://localhost:8081/auth/register"
+        }
+      },
+      {
+        "name": "3. Se Connecter",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"username\": \"testman\",\n  \"password\": \"test123\"\n}"
+          },
+          "url": "http://localhost:8081/auth/login"
+        }
+      }
+    ]
+  }
