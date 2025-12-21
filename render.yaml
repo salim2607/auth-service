@@ -4,10 +4,33 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile
     envVars:
-      - key: SPRING_DATASOURCE_URL
+      - key: DB_HOST
         fromDatabase:
           name: ciblorgasport-db
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: ciblorgasport-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: ciblorgasport-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: ciblorgasport-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: ciblorgasport-db
+          property: password
+      # Construit l'URL JDBC correcte
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://$(DB_HOST):$(DB_PORT)/$(DB_NAME)
+      - key: SPRING_DATASOURCE_USERNAME
+        value: $(DB_USER)
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: $(DB_PASSWORD)
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION_MS
