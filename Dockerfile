@@ -1,30 +1,19 @@
-# Étape 1 : Build
-FROM maven:3.8.7-openjdk-17-slim AS build
+# Multi-stage build for a smaller final image
+# Stage 1: Build the application
+FROM maven:3.9-amazoncorretto-17 AS build
 WORKDIR /app
-
-# Copier les fichiers de configuration Maven
 COPY pom.xml .
-COPY .mvn .mvn
-COPY mvnw .
-
-# Télécharger les dépendances
-RUN mvn dependency:go-offline -B
-
-# Copier le code source
+# Copy source code
 COPY src ./src
-
-# Compiler l'application
+# Build the application
 RUN mvn clean package -DskipTests
 
-# Étape 2 : Runtime
-FROM openjdk:17-slim
+# Stage 2: Create the runtime image
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
-
-# Copier le JAR depuis l'étape de build
+# Copy the built JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
-
-# Exposer le port 8081
+# Expose the port your app runs on
 EXPOSE 8081
-
-# Démarrer l'application
+# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
