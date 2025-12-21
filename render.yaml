@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: ciblorgasport-auth
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: ciblorgasport-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        value: admin
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: ciblorgasport-db
+          property: password
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRATION_MS
+        value: 86400000
+
+databases:
+  - name: ciblorgasport-db
+    databaseName: glop
+    user: admin
