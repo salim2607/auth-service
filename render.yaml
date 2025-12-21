@@ -4,14 +4,11 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile
     envVars:
-      # Render fournira automatiquement DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
+      # Render fournit automatiquement DATABASE_URL, DB_USER, DB_PASSWORD
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION_MS
         value: 86400000
-      # Port pour Render (optionnel, Render définit PORT automatiquement)
-      - key: PORT
-        value: 8081
 
 databases:
   - name: ciblorgasport-db
